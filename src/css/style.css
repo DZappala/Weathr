@@ -1,0 +1,66 @@
+@font-face {
+    font-family: "Norwester";
+    src: url("/fonts/norwester/norwester.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: "Kollektif";
+    src: url("/fonts/kollektif/kollektif.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url("/fonts/montserrat/Montserrat-Light.otf") format("OpenType");
+    font-weight: light;
+}
+
+body {
+    background-color: rgba(128, 128, 128, 0.699);
+}
+
+#location {
+    font-family: "Norwester";
+    font-size: 95pt;
+    text-align: center;
+}
+
+#weather {
+    font-family: "Kollektif";
+    font-size: 21pt;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+#temperature, #minTemp, #maxTemp {
+    font-family: "Montserrat-Light";
+    font-size: 15pt;
+    text-align: center;
+}
+
+#percipitation, #windSpeed, #humidity {
+    font-family: "Montserrat-Light";
+    font-size: 15pt;
+    text-align: center;
+}
+
+#weatherText {
+    width: 80%;
+    font-family: "Montserrat-Light";
+    font-size: 15pt;
+    position: absolute;
+    margin: 0px auto;
+    background-color: rgb(107, 0, 107);
+    color: white;
+}
+
+#weatherSearch {
+    font-family: "Montserrat-Light";
+    width: 100px;
+    background-color: rgb(107, 0, 107);
+    color: white;
+}
+
+#weatherSearch:hover {
+    background-color: rgba(128, 128, 128, 0.699);
+    color: black;
+}
