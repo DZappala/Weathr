@@ -21,9 +21,9 @@ $(document).ready(function () {
             var hour = now.getHours();
             $("#location").text(response.name);
             $("#weather").text(response.weather[0].main);
-            $("#temperature").text("Temperature " + response.main.temp + '&deg;');
-            $("#maxTemp").text("High " + response.main.temp_max + '&deg;');
-            $("#minTemp").text("Low " + response.main.temp_min + '&deg;');
+            $("#temperature").text("Temperature " + response.main.temp + ' ℉');
+            $("#maxTemp").text("High " + response.main.temp_max + ' ℉');
+            $("#minTemp").text("Low " + response.main.temp_min + ' ℉');
             $("#windSpeed").text("Wind Speed: " + response.wind.speed + " mph");
             $("#humidity").text("Humidity " + response.main.humidity + "%");
             if ((response.rain || response.snow) === undefined) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
             } else {
                 $("#percipitation").text("Snow " + response.snow + " in");
             };
-            // TODO images stack after every API call
+
             if (response.weather[0].id < 299) {
                 $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />')
             } else if (response.weather[0].id >= 300 && response.weather[0].id < 399) {
@@ -82,11 +82,12 @@ $(document).ready(function () {
                 return hour;
             });
             console.log(hour);
+            $('img').remove();
             $("#location").text(response.name);
             $("#weather").text(response.weather[0].main);
-            $("#temperature").text("Temperature " + response.main.temp + '&deg;');
-            $("#maxTemp").text("High " + response.main.temp_max + '&deg;');
-            $("#minTemp").text("Low " + response.main.temp_min + '&deg;');
+            $("#temperature").text("Temperature " + response.main.temp + ' ℉');
+            $("#maxTemp").text("High " + response.main.temp_max + ' ℉');
+            $("#minTemp").text("Low " + response.main.temp_min + ' ℉');
             $("#windSpeed").text("Wind Speed: " + response.wind.speed + " mph");
             $("#humidity").text("Humidity " + response.main.humidity + "%");
             if ((response.rain || response.snow) === undefined) {
@@ -96,8 +97,7 @@ $(document).ready(function () {
             } else {
                 $("#percipitation").text("Snow " + response.snow + " in");
             };
-            // TODO images stack after every API call
-            // TODO time in hours is local and not at the location that is searched
+
             if (response.weather[0].id < 299) {
                 $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />')
             } else if (response.weather[0].id >= 300 && response.weather[0].id < 399) {
@@ -114,11 +114,11 @@ $(document).ready(function () {
                 $("#weatherImg").prepend('<img src="/img/024-foggy.svg" />')
             } else if (response.weather[0].id === 800 && (hour < 7 || hour > 19)) {
                 $("#weatherImg").prepend('<img src="/img/015-moon.svg" />')
-            } else if (response.weather[0].id === 800 && (hour > 7 && hour < 19)) {
-                $("#weatherImg").prepend('<img src="/img/032-sun.svg" />')
+            } else if (response.weather[0].id === 800 && (hour >= 7 && hour <= 19)) {
+                $("#weatherImg").prepend('<img src="/img/032-sun.svg" />') // TODO sun.svg not displaying 
             } else if (response.weather[0].id === 801 && (hour < 7 || hour > 19)) {
                 $("#weatherImg").prepend('<img src="/img/031-cloud.svg" />')
-            } else if (response.weather[0].id === 801 && (hour > 7 && hour < 19)) {
+            } else if (response.weather[0].id === 801 && (hour >= 7 && hour <= 19)) {
                 $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
             } else if (response.weather[0].id >= 802) {
                 $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
