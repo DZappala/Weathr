@@ -1,0 +1,37 @@
+{
+  "name": "weathr",
+  "version": "1.0.0",
+  "description": "Get the weather for all your weather needs",
+  "main": "index.js",
+  "dependencies": {
+    "all-the-cities": "^2.0.1",
+    "requirejs": "^2.3.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "fuse.js": "^3.2.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DZappala/Weathr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DZappala/Weathr/issues"
+  },
+  "homepage": "https://github.com/DZappala/Weathr#readme"
+}
