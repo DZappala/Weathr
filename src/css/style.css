@@ -52,23 +52,11 @@ form {
 }
 
 #weatherText {
-    width: 200px;
+    width: 400px;
     font-family: "Montserrat-Light";
     font-size: 15pt;
     background-color: rgb(107, 0, 107);
     color: white;
-}
-
-#weatherSearch {
-    font-family: "Montserrat-Light";
-    width: 100px;
-    background-color: rgb(107, 0, 107);
-    color: white;
-}
-
-#weatherSearch:hover {
-    background-color: rgba(128, 128, 128, 0.699);
-    color: black;
 }
 
 #weatherImg img {
