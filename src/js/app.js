@@ -2,7 +2,6 @@
 import {
     apiKey,
     ipstackKey,
-    timezonedbKey,
     googleMapsKey
 } from "./config.js";
 
@@ -64,29 +63,29 @@ $(document).ready(function () {
 
             // Logic decides what picture to show next to the Temperature Description (isthisAI.jpg)
             if (response.weather[0].id < 299) {
-                $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />')
+                $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />');
             } else if (response.weather[0].id >= 300 && response.weather[0].id < 399) {
-                $("#weatherImg").prepend('<img src="/img/011-rainy-1.svg" />')
+                $("#weatherImg").prepend('<img src="/img/011-rainy-1.svg" />');
             } else if (response.weather[0].id >= 500 && response.weather[0].id < 504) {
-                $("#weatherImg").prepend('<img src="/img/023-forecast.svg" />')
+                $("#weatherImg").prepend('<img src="/img/023-forecast.svg" />');
             } else if (response.weather[0].id >= 511 && response.weather[0].id < 532) {
-                $("#weatherImg").prepend('<img src="/img/013-rain.svg" />')
+                $("#weatherImg").prepend('<img src="/img/013-rain.svg" />');
             } else if (response.weather[0].id >= 600 && response.weather[0].id < 699 && !611 && !612) {
-                $("#weatherImg").prepend('<img src="/img/009-snow.svg" />')
+                $("#weatherImg").prepend('<img src="/img/009-snow.svg" />');
             } else if (response.weather[0].id === 611 || response.weather[0].id === 612) {
-                $("#weatherImg").prepend('<img src="/img/010-sleet.svg" />')
+                $("#weatherImg").prepend('<img src="/img/010-sleet.svg" />');
             } else if (response.weather[0].id >= 700 && response.weather[0].id < 799) {
-                $("#weatherImg").prepend('<img src="/img/024-foggy.svg" />')
+                $("#weatherImg").prepend('<img src="/img/024-foggy.svg" />');
             } else if (response.weather[0].id === 800 && (hour < 7 || hour > 19)) {
-                $("#weatherImg").prepend('<img src="/img/015-moon.svg" />')
+                $("#weatherImg").prepend('<img src="/img/015-moon.svg" />');
             } else if (response.weather[0].id === 800 && (hour > 7 && hour < 19)) {
-                $("#weatherImg").prepend('<img src="/img/032-sun.svg" />')
+                $("#weatherImg").prepend('<img src="/img/032-sun.svg" />');
             } else if (response.weather[0].id === 801 && (hour < 7 || hour > 19)) {
-                $("#weatherImg").prepend('<img src="/img/031-cloud.svg" />')
+                $("#weatherImg").prepend('<img src="/img/031-cloud.svg" />');
             } else if (response.weather[0].id === 801 && (hour > 7 && hour < 19)) {
-                $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
+                $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />');
             } else if (response.weather[0].id >= 802) {
-                $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
+                $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />');
             };
         });
     })
@@ -110,7 +109,7 @@ $(document).ready(function () {
             let resultLon = weatherResponse.coord.lon;
 
 
-            // evaluates the timezone of the location retrievedd from open weather map
+            // evaluates the timezone of the location retrieved from open weather map
             var loc = resultLat + ',' + resultLon;
             var targetDate = new Date();
             var timestamp = targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60;
@@ -131,7 +130,7 @@ $(document).ready(function () {
                 // Removes the image if there already is one ## WARNING REMOVES ALL IMG ELEMENTS FROM PAGE ### ( we need to fix this *sigh* )
                 $('img').remove();
 
-                // Inserts various weather data into Divs basedon ID 
+                // Inserts various weather data into Divs based on ID 
                 $("#location").text(weatherResponse.name);
                 $("#weather").text(weatherResponse.weather[0].main);
                 $("#temperature").text("Temperature " + weatherResponse.main.temp + ' ℉');
@@ -141,39 +140,40 @@ $(document).ready(function () {
                 $("#humidity").text("Humidity " + weatherResponse.main.humidity + "%");
 
                 // Logic determining if it's raining or not
-                if ((weatherResponse.rain || weatherResponse.snow) === undefined) {
-                    $("#percipitation").css("display: none"); // TODO is supposed to remove the element from the page but .remove() did not work so like idk, maybe lets try again
-                } else if (weatherResponse.rain) {
-                    $("#percipitation").text("Rain " + weatherResponse.rain + " in");
-                } else {
-                    $("#percipitation").text("Snow " + weatherResponse.snow + " in");
+
+                if (weatherResponse.rain != undefined) {
+                    $("#percipitation").text("Rain " + weatherResponse.rain["3h"] + " in");
+                };
+                
+                if (weatherResponse.snow != undefined) {
+                    $("#percipitation").text("Snow " + weatherResponse.snow["3h"] + " in");
                 };
 
-                // Logic decides what picture to show next to the Temperature Description (isthisAI.jpg)
+                // Logic decides what picture to show next to the Temperature Description
                 if (weatherResponse.weather[0].id < 299) {
-                    $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/004-thunderstorm.svg" />');
                 } else if (weatherResponse.weather[0].id >= 300 && weatherResponse.weather[0].id < 399) {
-                    $("#weatherImg").prepend('<img src="/img/011-rainy-1.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/011-rainy-1.svg" />');
                 } else if (weatherResponse.weather[0].id >= 500 && weatherResponse.weather[0].id < 504) {
-                    $("#weatherImg").prepend('<img src="/img/023-forecast.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/023-forecast.svg" />');
                 } else if (weatherResponse.weather[0].id >= 511 && weatherResponse.weather[0].id < 532) {
-                    $("#weatherImg").prepend('<img src="/img/013-rain.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/013-rain.svg" />');
                 } else if (weatherResponse.weather[0].id >= 600 && weatherResponse.weather[0].id < 699 && !611 && !612) {
-                    $("#weatherImg").prepend('<img src="/img/009-snow.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/009-snow.svg" />');
                 } else if (weatherResponse.weather[0].id === 611 || weatherResponse.weather[0].id === 612) {
-                    $("#weatherImg").prepend('<img src="/img/010-sleet.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/010-sleet.svg" />');
                 } else if (weatherResponse.weather[0].id >= 700 && weatherResponse.weather[0].id < 799) {
-                    $("#weatherImg").prepend('<img src="/img/024-foggy.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/024-foggy.svg" />');
                 } else if (weatherResponse.weather[0].id === 800 && (hour < 7 || hour > 19)) {
-                    $("#weatherImg").prepend('<img src="/img/015-moon.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/015-moon.svg" />');
                 } else if (weatherResponse.weather[0].id === 800 && (hour >= 7 && hour <= 19)) {
-                    $("#weatherImg").prepend('<img src="/img/032-sun.svg" />') // TODO sun.svg not displaying 
+                    $("#weatherImg").prepend('<img src="/img/032-sun.svg" />');
                 } else if (weatherResponse.weather[0].id === 801 && (hour < 7 || hour > 19)) {
-                    $("#weatherImg").prepend('<img src="/img/031-cloud.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/031-cloud.svg" />');
                 } else if (weatherResponse.weather[0].id === 801 && (hour >= 7 && hour <= 19)) {
-                    $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />');
                 } else if (weatherResponse.weather[0].id >= 802) {
-                    $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />')
+                    $("#weatherImg").prepend('<img src="/img/014-overcast.svg" />');
                 };
             });
         });
